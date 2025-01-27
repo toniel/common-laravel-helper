@@ -1,5 +1,10 @@
 <?php
 
 function activeUrl($routeName){
-    return request()->routeIs($routeName) ? 'active' : '';
+
+    if(is_array($routeName)){
+        return in_array(request()->route()->getName(), $routeName);
+    }
+
+    return request()->routeIs($routeName);
 }
