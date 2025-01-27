@@ -3,8 +3,12 @@
 function activeUrl($routeName){
 
     if(is_array($routeName)){
-        // return in_array(request()->route()->getName(), $routeName);
-        return collect($routeName)->filter(fn($name) =>  app('Str')->is(request()->route()->getName(), $name))->isNotEmpty();
+
+        foreach($routeName as $route){
+            if(request()->routeIs($route)){
+                return true;
+            }
+        }
     }
 
     return request()->routeIs($routeName);
