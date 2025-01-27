@@ -1,0 +1,42 @@
+{
+    "name": "toniel/common-laravel-helper",
+    "description": "Common Laravel helper package",
+    "authors": [
+        {
+            "name": "Toni Listiyo",
+            "email": "l.toni2007@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "autoload": {
+        "psr-4": {
+            "Toniel\\CommonHelper\\": "src/"
+        },
+        "files": [
+            "src/rupiah.php",
+            "src/route.php"
+        ]
+    },
+
+    "autoload-dev": {
+        "psr-4": {
+            "Toniel\\CommonHelper\\Tests\\": "tests/"
+        }
+    },
+
+    "require-dev": {
+        "orchestra/testbench": "^9.9"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Toniel\\CommonHelper\\RupiahServiceProvider",
+                "Toniel\\CommonHelper\\RouteServiceProvider"
+            ],
+            "aliases": {
+                "RupiahFacade": "Toniel\\CommonHelper\\Facades\\RupiahFacade"
+            }
+        }
+    } 
+}
