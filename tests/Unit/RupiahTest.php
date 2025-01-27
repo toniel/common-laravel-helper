@@ -17,19 +17,25 @@ class RupiahTest extends TestCase
 
     public function testReturnCorrectFormat()
     {
-        RupiahFacade::shouldReceive('format')->with(1000000)->andReturn('Rp 1.000.000');
-        $this->assertEquals('Rp 1.000.000', RupiahFacade::format(1000000));
+        RupiahFacade::shouldReceive('format')->with(1000000)->andReturn('Rp1.000.000,00');
+        $this->assertEquals('Rp1.000.000,00', RupiahFacade::format(1000000));
     }
 
     public function testReturnCorrectSpelled()
     {
-        RupiahFacade::shouldReceive('spelled')->with(1000000)->andReturn('satu juta');
-        $this->assertEquals('satu juta', RupiahFacade::spelled(1000000));
+        RupiahFacade::shouldReceive('toWords')->with(1000000)->andReturn('satu juta');
+        $this->assertEquals('satu juta', RupiahFacade::toWords(1000000));
     }
 
     public function testReturnSeribu()
     {
-        RupiahFacade::shouldReceive('spelled')->with(1000)->andReturn('seribu');
-        $this->assertEquals('seribu', RupiahFacade::spelled(1000));
+        RupiahFacade::shouldReceive('toWords')->with(1000)->andReturn('seribu');
+        $this->assertEquals('seribu', RupiahFacade::toWords(1000));
+    }
+
+    public function testReturnCorrectParse()
+    {
+        RupiahFacade::shouldReceive('parseFromRupiah')->with('Rp1.000.000,00')->andReturn(1000000);
+        $this->assertEquals(1000000, RupiahFacade::parseFromRupiah('Rp1.000.000,00'));
     }
 }

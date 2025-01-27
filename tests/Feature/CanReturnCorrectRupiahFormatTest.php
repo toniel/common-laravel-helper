@@ -25,6 +25,6 @@ class CanReturnCorrectRupiahFormatTest extends TestCase
     }
     public function testCanReturnCorrectRupiahFormat()
     {
-       $this->get('/rupiah')->assertSuccessful()->assertSee("Rp 10.000");
+       $this->get('/rupiah')->assertSuccessful()->assertSee("Rp10.000,00");
     }
 }
