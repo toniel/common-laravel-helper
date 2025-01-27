@@ -6,12 +6,17 @@ class Rupiah
 
     public function format($value,$decimals = 2)
     {
-        return "Rp " . number_format($value, $decimals, ',', '.');
-        // $value = "Rp " . number_format($number, 0, ',', '.');
-        // return $value;
+        return toRupiah($value,$decimals);
     }
-    public function spelled($value)
+    public function toWords($value)
     {
         return spelled($value);
     }
+
+    public function parseFromRupiah($value)
+    {
+        return parseFromRupiah($value);
+    }
+
+    
 }

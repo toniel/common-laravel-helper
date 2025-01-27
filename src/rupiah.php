@@ -1,7 +1,13 @@
 <?php
-function rupiah($number)
+function toRupiah($number, $decimals = 2)
 {
-    return "Rp " . number_format($number, 2, ',', '.');
+    return "Rp" . number_format($number, $decimals, ',', '.');
+}
+
+function parseFromRupiah($rupiah)
+{
+    $number = str_replace(['Rp', '.', ' '], '', $rupiah);
+    return (int)$number;
 }
 
 function spelled($nilai)
